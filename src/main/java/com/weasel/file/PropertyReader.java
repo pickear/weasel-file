@@ -1,4 +1,4 @@
-package com.weasel.lang.helper;
+package com.weasel.file;
 
 import org.apache.commons.configuration.CompositeConfiguration;
 import org.apache.commons.configuration.ConfigurationException;
