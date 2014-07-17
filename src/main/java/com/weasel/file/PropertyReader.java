@@ -1,34 +1,39 @@
 package com.weasel.file;
 
-import org.apache.commons.configuration.CompositeConfiguration;
-import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.configuration.PropertiesConfiguration;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+import com.weasel.file.exception.FileNotFoundException;
 
 /**
  * 
  * @author Dylan
- *
+ * 
  */
 public class PropertyReader {
 
-	private PropertyReader(){}
-	
-	public static CompositeConfiguration config = new CompositeConfiguration();
-	
-	public PropertyReader read(String fileName){
+	private static Properties properties = new Properties();
+
+	private PropertyReader(String fileName) {
+		InputStream is = PropertyReader.class.getResourceAsStream(fileName);
 		try {
-			config.addConfiguration(new PropertiesConfiguration(fileName));
-		} catch (ConfigurationException e) {
-			e.printStackTrace();
+			properties.load(is);
+		} catch (IOException e) {
+			throw new FileNotFoundException("can not load file", e);
 		}
-		return this;
 	}
-	
-	public String getProperty(String key){
-		return config.getString(key);
+
+	public String getProperty(String key) {
+		return properties.getProperty(key);
 	}
-	
-	public static PropertyReader newInstance(){
-		return new PropertyReader();
+
+	/**
+	 * @param fileName
+	 * @return
+	 */
+	public static PropertyReader read(String fileName) {
+		
+		return new PropertyReader(fileName);
 	}
 }
