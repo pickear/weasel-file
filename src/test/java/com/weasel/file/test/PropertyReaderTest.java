@@ -1,8 +1,6 @@
 package com.weasel.file.test;
 
 import com.weasel.file.PropertyReader;
-import com.weasel.lang.helper.JdkLoggerFactory;
-import com.weasel.lang.logging.JdkLogger;
 
 /**
  * @author Dylan
@@ -11,11 +9,13 @@ import com.weasel.lang.logging.JdkLogger;
  */
 public class PropertyReaderTest {
 	
-	private final static JdkLogger log = JdkLoggerFactory.getLogger(PropertyReaderTest.class);
 
 	public static void main(String[] args) {
 		
-		PropertyReader reader = PropertyReader.read("/application.properties");
-		log.info(reader.getProperty("jdbc.dirverClass"));
+		PropertyReader reader = PropertyReader.read("classpath*:application.properties");
+		System.out.println(reader.getProperty("jdbc.dirverClass"));
+		System.out.println(reader.getProperty("jdbc.url"));
+		System.out.println(reader.getProperty("jdbc.username"));
+		System.out.println(reader.getProperty("jdbc.password"));
 	}
 }

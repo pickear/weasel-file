@@ -5,21 +5,16 @@
 	<artifactId>weasel-file</artifactId>
 	
 	<parent>
-		<groupId>com.weasel.parent</groupId>
-		<artifactId>weasel-parent</artifactId>
+		<groupId>com.weasel.root</groupId>
+		<artifactId>weasel-root</artifactId>
 		<version>1.0.0-RELEASE</version>
-		<relativePath>../weasel-parent/pom.xml</relativePath>
+		<relativePath>../weasel-root/pom.xml</relativePath>
 	</parent>
 
 	<dependencies>
 		<dependency>
 			<groupId>commons-configuration</groupId>
 			<artifactId>commons-configuration</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.weasel.lang</groupId>
-			<artifactId>weasel-lang</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 
